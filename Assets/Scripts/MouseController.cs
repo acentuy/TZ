@@ -12,7 +12,7 @@ public class MouseController : MonoBehaviour
         if(HeroController.press)
         MouseMove();
     }
-    void MouseMove()
+    private void MouseMove()
     {
         side = Input.GetAxis("Mouse X")* sensetive;
     }
