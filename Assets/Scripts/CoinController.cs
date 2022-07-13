@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 class CoinController : MonoBehaviour
 {   
     [SerializeField] private float deltaYPos = 0.15f;
@@ -16,7 +13,6 @@ class CoinController : MonoBehaviour
     {
         yPos = transform.localPosition.y;
     }
-
     private void FixedUpdate()
     {
         LevitationEffect();
@@ -39,5 +35,4 @@ class CoinController : MonoBehaviour
         }
     }
     public void Destroy(Collider collision)=> Destroy(collision.gameObject);
-    
 }

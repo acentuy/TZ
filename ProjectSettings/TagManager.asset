@@ -9,6 +9,7 @@ TagManager:
   - Gold
   - MovingPlane
   - ScoreDetector
+  - FinishGame
   layers:
   - Default
   - TransparentFX

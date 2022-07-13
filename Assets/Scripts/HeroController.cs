@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class HeroController : MonoBehaviour
 {
     public static bool press = false;
 
-    [SerializeField] private float speed = 50f;
+    [SerializeField] private float speed = 5f;
     [SerializeField] private float horizontalMultiplier = 2;
 
     [SerializeField] private Rigidbody rb;
@@ -17,20 +14,23 @@ public class HeroController : MonoBehaviour
     [SerializeField] private CoinController controller;
 
     [SerializeField] private AudioSource coinSound;
+    [SerializeField] private AudioSource winSound;
 
     [SerializeField] private Text coinsText;
 
     [SerializeField] private GameObject effectStars;
     [SerializeField] private GameObject effectYellowBalls;
+    [SerializeField] private GameObject winScreen;
+
+    private bool control = true;
 
     private Vector3 deltaPos = new Vector3(0, 1, 0);
+    private Vector3 finishPos=new Vector3(0, -0.6f, 100);
+    private Vector3 forwardMove, horizontalMove, move;
 
     private float horizontalInput;
     private int borderX = 8;
     private int coins = 110;
-
-    private Vector3 forwardMove, horizontalMove, move;
-
     private void Start() {
 
         anim = GetComponent<Animator>();
@@ -45,13 +45,16 @@ public class HeroController : MonoBehaviour
         {
             press = false;
         }
-
-        if (press)
+        if (control)
         {
-            Run();
-            horizontalInput = MouseController.side;
+            if (press)
+            {
+                Run();
+                horizontalInput = MouseController.side;
+                return;
+            }
+            anim.SetTrigger("Idle");
         }
-        else anim.SetTrigger("Idle");
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -64,7 +67,14 @@ public class HeroController : MonoBehaviour
             coinSound.Play();
             controller.Destroy(collision);
         }
-
+        if (collision.gameObject.tag == "FinishGame")
+        {
+            winSound.Play();
+            control = false;
+            rb.transform.position = finishPos;
+            anim.SetTrigger("Finish");
+            winScreen.SetActive(true);
+        }
     }
     private void Run()
     {
@@ -72,8 +82,10 @@ public class HeroController : MonoBehaviour
         forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime * horizontalMultiplier;
         move = rb.position + forwardMove + horizontalMove;
+
         if (move.x>borderX) move.x=borderX;
         else if(move.x<-borderX) move.x=-borderX;
+
         rb.MovePosition(move);
     }
 
