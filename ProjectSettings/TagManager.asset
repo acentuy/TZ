@@ -10,6 +10,7 @@ TagManager:
   - MovingPlane
   - ScoreDetector
   - FinishGame
+  - Hero
   layers:
   - Default
   - TransparentFX

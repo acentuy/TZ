@@ -1,6 +1,6 @@
 using UnityEngine;
-class CoinController : MonoBehaviour
-{   
+class CoinAnimation : MonoBehaviour
+{
     [SerializeField] private float deltaYPos = 0.15f;
     [SerializeField] private float levitationSpeed = 0.3f;
 
@@ -15,9 +15,9 @@ class CoinController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        LevitationEffect();
+        Idle();
     }
-    private void LevitationEffect()
+    private void Idle()
     {
         VectorToMove = transform.position;
         if (moveUp)
@@ -34,5 +34,4 @@ class CoinController : MonoBehaviour
             moveUp = !moveUp;
         }
     }
-    public void Destroy(Collider collision)=> Destroy(collision.gameObject);
 }

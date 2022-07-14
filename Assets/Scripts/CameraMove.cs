@@ -1,5 +1,5 @@
 using UnityEngine;
-class CameraController : MonoBehaviour
+class CameraMove : MonoBehaviour
 {
     [SerializeField] private Transform hero;
 
@@ -9,10 +9,11 @@ class CameraController : MonoBehaviour
     private int nullY = 2;
     void Start()
     {
-        offset = transform.position-hero.position;
+        offset = transform.position - hero.position;
     }
     void Update()
     {
-        transform.position = new Vector3(nullX, nullY, (offset + hero.position).z);
+        Move();
     }
+    private void Move() => transform.position = new Vector3(nullX, nullY, (offset + hero.position).z);
 }

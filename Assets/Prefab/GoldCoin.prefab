@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8839481686912973162}
   - component: {fileID: 3839314523054278567}
   - component: {fileID: 7166301272684304382}
+  - component: {fileID: 228274955339641605}
   m_Layer: 0
   m_Name: GoldCoin
   m_TagString: Gold
@@ -97,3 +98,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 5f9ee1799e7f21548ba0dd65ac83ea7f, type: 3}
+--- !u!114 &228274955339641605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7615992963660824132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc27a70b156a474cab72f0b51a0ff20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinsText: {fileID: 0}
+  heroController: {fileID: 0}
+  effectStars: {fileID: 1218260914399284967, guid: b7d9db78e392bc943889f291d9ae8728,
+    type: 3}
+  effectYellowBalls: {fileID: 3156924109790558122, guid: 570bf411d0b043e4e88a77c8934d8165,
+    type: 3}
+  coinSound: {fileID: 0}
